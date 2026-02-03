@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUBBLE GO — Прыгай и собирай кристаллы!</title>
+    <title>BUBBLE GO — Official Site</title>
     <style>
         :root { 
             --primary: #00d2ff; 
             --secondary: #2f3542; 
-            --accent: #70a1ff;
             --bg: #f4f7f6;
         }
         
@@ -20,11 +19,29 @@
             line-height: 1.6;
         }
 
+        /* Кнопка переключения языка */
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .lang-btn {
+            background: #000;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
         header { 
             background: white; 
             padding: 60px 20px; 
             text-align: center;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05); 
+            position: relative;
         }
         
         .logo { 
@@ -49,10 +66,7 @@
             font-size: 1.1em; 
             transition: 0.3s;
         }
-        .btn-download:hover { 
-            transform: scale(1.05); 
-            background: #222;
-        }
+        .btn-download:hover { transform: scale(1.05); background: #222; }
 
         .features { 
             display: flex; 
@@ -73,88 +87,100 @@
         }
         .card h3 { color: var(--primary); margin-top: 0; }
 
-        .screenshots { 
-            padding: 50px 20px; 
-            background: #fff; 
-            text-align: center;
-        }
-        .gallery-wrapper {
-            max-width: 1100px;
-            margin: 0 auto;
-            overflow-x: auto;
-            padding: 20px 0;
-        }
-        .screen-container { 
-            display: flex; 
-            gap: 15px; 
-            justify-content: center; /* Центрируем, если мало картинок */
-            flex-wrap: wrap; /* Чтобы на компах они шли в ряд */
-        }
-        .screen-container img { 
-            height: 450px; 
-            border-radius: 15px; 
-            border: 2px solid #eee;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+        .screenshots { padding: 50px 20px; background: #fff; text-align: center; }
+        .gallery-wrapper { max-width: 1100px; margin: 0 auto; overflow-x: auto; padding: 20px 0; }
+        .screen-container { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .screen-container img { height: 450px; border-radius: 15px; border: 2px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
-        footer { 
-            padding: 40px 20px; 
-            background: #2f3542; 
-            color: #eee; 
-            text-align: center;
-        }
+        footer { padding: 40px 20px; background: #2f3542; color: #eee; text-align: center; }
         footer a { color: #00d2ff; text-decoration: none; margin: 0 10px; }
         .copyright { margin-top: 20px; font-size: 0.8em; opacity: 0.7; }
 
-        @media (max-width: 600px) {
-            .screen-container img { height: 350px; }
-        }
+        @media (max-width: 600px) { .screen-container img { height: 350px; } .lang-switch { top: 10px; right: 10px; } }
     </style>
 </head>
 <body>
 
     <header>
+        <div class="lang-switch">
+            <button class="lang-btn" onclick="toggleLang()">RU / EN</button>
+        </div>
         <img src="20251121_2005_image.png" alt="BUBBLE GO Logo" class="logo">
-        <h1>BUBBLE GO</h1>
-        <p class="tagline">Управляй энергичным шариком! Прыгай по платформам, обходи препятствия и собирай все магические кристаллы на своем пути.</p>
-        <a href="https://play.google.com/store/apps/details?id=com.ValenLTD.BUBBLEGO" class="btn-download" target="_blank">
+        <h1 id="title">BUBBLE GO</h1>
+        <p id="tagline" class="tagline">Управляй энергичным шариком! Прыгай по платформам, обходи препятствия и собирай все магические кристаллы на своем пути.</p>
+        <a id="download-btn" href="https://play.google.com/store/apps/details?id=com.ValenLTD.BUBBLEGO" class="btn-download" target="_blank">
             СКАЧАТЬ В GOOGLE PLAY
         </a>
     </header>
 
     <section class="features">
         <div class="card">
-            <h3>Собирай кристаллы</h3>
-            <p>Твоя главная цель — собрать как можно больше кристаллов, чтобы ставить новые рекорды.</p>
+            <h3 id="f1-t">Собирай кристаллы</h3>
+            <p id="f1-d">Твоя главная цель — собрать как можно больше кристаллов, чтобы ставить новые рекорды.</p>
         </div>
         <div class="card">
-            <h3>Прыгай по платформам</h3>
-            <p>Мастерски перепрыгивай с платформы на платформу. Будь осторожен — путь становится сложнее!</p>
+            <h3 id="f2-t">Прыгай по платформам</h3>
+            <p id="f2-d">Мастерски перепрыгивай с платформы на платформу. Будь осторожен — путь становится сложнее!</p>
         </div>
         <div class="card">
-            <h3>Динамичный драйв</h3>
-            <p>Проверь свою скорость и реакцию в мире, где каждый прыжок имеет значение.</p>
+            <h3 id="f3-t">Динамичный драйв</h3>
+            <p id="f3-d">Проверь свою скорость и реакцию в мире, где каждый прыжок имеет значение.</p>
         </div>
     </section>
 
     <section class="screenshots">
-        <h2>Скриншоты геймплея</h2>
+        <h2 id="gallery-title">Скриншоты геймплея</h2>
         <div class="gallery-wrapper">
             <div class="screen-container">
-                <img src="3.png" alt="BUBBLE GO Скриншот 1">
-                <img src="4.png" alt="BUBBLE GO Скриншот 2">
-                <img src="5.png" alt="BUBBLE GO Скриншот 3">
+                <img src="3.png" alt="Screenshot 1">
+                <img src="4.png" alt="Screenshot 2">
+                <img src="5.png" alt="Screenshot 3">
             </div>
         </div>
     </section>
 
     <footer>
         <p>
-            <a href="https://korolevvalentin1983-cmd.github.io/privacy-policy-bubble-go/">Privacy Policy</a> | 
-            <a href="mailto:korolevvalentin1983@gmail.com">Поддержка</a>
+            <a href="https://korolevvalentin1983-cmd.github.io/privacy-policy-bubble-go/" id="link-pp">Privacy Policy</a> | 
+            <a href="mailto:korolevvalentin1983@gmail.com" id="link-support">Поддержка</a>
         </p>
-        <p class="copyright">&copy; 2026 Valentin Korolev. Все права защищены.</p>
+        <p class="copyright">&copy; 2026 Valentin Korolev. All rights reserved.</p>
     </footer>
 
+    <script>
+        let currentLang = 'ru';
+        const texts = {
+            ru: {
+                tagline: "Управляй энергичным шариком! Прыгай по платформам, обходи препятствия и собирай все магические кристаллы на своем пути.",
+                download: "СКАЧАТЬ В GOOGLE PLAY",
+                f1t: "Собирай кристаллы", f1d: "Твоя главная цель — собрать как можно больше кристаллов, чтобы ставить новые рекорды.",
+                f2t: "Прыгай по платформам", f2d: "Мастерски перепрыгивай с платформы на платформу. Будь осторожен — путь становится сложнее!",
+                f3t: "Динамичный драйв", f3d: "Проверь свою скорость и реакцию в мире, где каждый прыжок имеет значение.",
+                gallery: "Скриншоты геймплея", support: "Поддержка"
+            },
+            en: {
+                tagline: "Control an energetic ball! Jump on platforms, dodge obstacles, and collect all the magic crystals on your way.",
+                download: "GET IT ON GOOGLE PLAY",
+                f1t: "Collect Crystals", f1d: "Your main goal is to collect as many crystals as possible to set new high scores.",
+                f2t: "Jump on Platforms", f2d: "Masterfully jump from platform to platform. Be careful — the path gets harder!",
+                f3t: "Dynamic Drive", f3d: "Test your speed and reaction in a world where every jump counts.",
+                gallery: "Gameplay Screenshots", support: "Support"
+            }
+        };
+
+        function toggleLang() {
+            currentLang = currentLang === 'ru' ? 'en' : 'ru';
+            document.getElementById('tagline').innerText = texts[currentLang].tagline;
+            document.getElementById('download-btn').innerText = texts[currentLang].download;
+            document.getElementById('f1-t').innerText = texts[currentLang].f1t;
+            document.getElementById('f1-d').innerText = texts[currentLang].f1d;
+            document.getElementById('f2-t').innerText = texts[currentLang].f2t;
+            document.getElementById('f2-d').innerText = texts[currentLang].f2d;
+            document.getElementById('f3-t').innerText = texts[currentLang].f3t;
+            document.getElementById('f3-d').innerText = texts[currentLang].f3d;
+            document.getElementById('gallery-title').innerText = texts[currentLang].gallery;
+            document.getElementById('link-support').innerText = texts[currentLang].support;
+        }
+    </script>
 </body>
 </html>
